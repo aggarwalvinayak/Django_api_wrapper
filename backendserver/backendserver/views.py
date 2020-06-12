@@ -6,8 +6,19 @@ from django.http import HttpResponse
 class api_news(APIView):
 
 	def get(self,request):
-		x=requests.get("https://newsapi.org/v2/everything?q=trump&apiKey=ed670e2fd04f475fa4b296d2085be2e3")		
-		# print(x.json())
+		search = request.GET.get('search')
+		pageNumber = request.GET.get('page')
+		country = request.GET.get('country')
+		source = request.GET.get('source')
+
+		if(search):
+			x=requests.get("https://newsapi.org/v2/everything?q="+search+"&apiKey=ed670e2fd04f475fa4b296d2085be2e3")
+		elif(source):
+			x=requests.get("https://newsapi.org/v2/sources?apiKey=ed670e2fd04f475fa4b296d2085be2e3&country="+source)
+		elif(country):
+			x=requests.get("https://newsapi.org/v2/top-headlines?country="+country+"&apiKey=ed670e2fd04f475fa4b296d2085be2e3&page="+pageNumber+"&pageSize=11")
+		else:
+			x=requests.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=ed670e2fd04f475fa4b296d2085be2e3&page=1&pageSize=11")
 
 		return HttpResponse(x)
 

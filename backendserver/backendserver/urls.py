@@ -19,5 +19,5 @@ from .views import api_news
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('url/',api_news.as_view())
+    path('news/',api_news.as_view())
 ]
