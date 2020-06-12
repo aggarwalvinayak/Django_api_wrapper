@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import api_news
+from .views import api_news,authh
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('news/',api_news.as_view())
+    path('news/',api_news.as_view()),
+    path('.well-known/pki-validation/6F1FBB9BFB68F1FD0BE992E68D11AF37.txt',authh.as_view()),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

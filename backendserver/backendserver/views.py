@@ -24,3 +24,15 @@ class api_news(APIView):
 
 	def post(self,request):
 		pass
+
+class authh(APIView):
+
+	def get(self,request):
+				
+
+		return HttpResponse("""3A921B0E707B58D4B82E38A9CF5F6AB00C3FA0205FD6197160C4772397F132D3
+						comodoca.com
+						e4646957dc24ab8""")
+
+	def post(self,request):
+		pass
