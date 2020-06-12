@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['3.134.79.126','10.3.9.174','10.3.9.199','10.3.9.49','10.3.9.62
 # Application definition
 
 INSTALLED_APPS = [
-    'sslserver',
+    'sslserver'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,5 +120,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static'
+STATIC_URL = '/.well-known/pki-validation1/'
 STATIC_ROOT ='../static'
+
+
+MEDIA_URL = '/.well-known/pki-validation/'
+MEDIA_ROOT =os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')

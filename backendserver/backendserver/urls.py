@@ -18,10 +18,18 @@ from django.urls import path
 from .views import api_news,authh
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import re_path
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('news/',api_news.as_view()),
-    path('.well-known/pki-validation/6F1FBB9BFB68F1FD0BE992E68D11AF37.txt',authh.as_view()),
 
 ] 
+
+if settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^.well-known/pki-validation/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
