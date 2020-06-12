@@ -24,4 +24,4 @@ urlpatterns = [
     path('news/',api_news.as_view()),
     path('.well-known/pki-validation/6F1FBB9BFB68F1FD0BE992E68D11AF37.txt',authh.as_view()),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
